@@ -1,2 +1,4 @@
-﻿  C++ Functions.cpp
-  Öğrenim ve Deneyim.vcxproj -> C:\Users\furka\source\repos\Öğrenim ve Deneyim\Debug\Öğrenim ve Deneyim.exe
+﻿  Inventory Enum-Struct.cpp
+c:\users\furka\source\repos\öğrenim ve deneyim\öğrenim ve deneyim\inventory enum-struct.cpp(123): error C3867: 'SocketToInventory::getSocketOfItem': standart olmayan söz dizimi; bir üyeye işaretçi oluşturmak için '&' kullanın
+  C++ Functions.cpp
+  Kod Üretiliyor...

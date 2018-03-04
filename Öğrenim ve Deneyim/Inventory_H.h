@@ -28,10 +28,17 @@ const extern ItemVariables FLASH_LIGHT_t = { "FLASH LIGHT", 5 };
 const extern ItemVariables WATER_t = { "WATER", 10 };
 
 struct SocketToInventory {
-	int socketOfItem;
+	public:
+		int socketOfItem;
+		int getSocketOfItem() const {
+			return socketOfItem;
+		}
+		void socketChangingOfItem(int socket) {
+			socketOfItem = socket;
+		}
 };
 
-extern SocketToInventory TORCH_i = {1};
-extern SocketToInventory AK_47_i = {2};
-extern SocketToInventory FLASH_LIGHT_i = {3};
-extern SocketToInventory WATER_i = {4};
+SocketToInventory TORCH_i = {1};
+SocketToInventory AK_47_i = {2};
+SocketToInventory FLASH_LIGHT_i = {3};
+SocketToInventory WATER_i = {4};
