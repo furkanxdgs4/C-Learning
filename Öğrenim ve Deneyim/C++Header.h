@@ -4,16 +4,15 @@
 #include <string>
 using namespace std;
 
-
 namespace defaultvalues {
-	constexpr float pi(3.14159f);
-	constexpr double avogadro(6.0221413e23);
-	constexpr float realWorldsGravity(9.80665f);
+	extern const float pi;
+	extern const double avogadro;
+	extern const float realWorldsGravity;
 }
 
 void calculateFieldOfACircle();
 
-void determineLettersValues(string introducer);
+void determineLettersValues(char x);
 void determineLettersValuesMain();
 
 
@@ -27,11 +26,41 @@ float intPow(const int number, const int exponent);
 
 bool areTheyEqual(double x, double y, float percentOfError);
 
+int determineNearestPow(int number, int exponent);
+void digitToBitTransformer();
+
+
+void bitToDecimalTransformer();
+
+
+
+
 	//TEST AREA OF SECTIONS, AT THE SAME TIME; LITTLE SUMMARIES OF SECTIONS
-void testAreaOfSection28();
+
+ //Section 2.9 - Const & Consexpr Usages
+void testAreaOfSection29();
+
+ //Section 3.2 - Some of the Arithmetic Operator; In this Function, Reaminder Operator
 void checkOfSection32();
 
-int determineBitCapacity(int number, int exponent);
-void digitBitTransformer();
+ //Section 3.8a - BitFlags and Bitwise Operators
+void testingBoolBits();
+void testingSection38a();
 
+ //Section 4.3 - Local Scope Globals
+void writeOutStatic(int input);
+
+ //Section 4.4b - Beginning to String
+void yearsPerLetter();
+
+ //Section 4.5 - Enumerations
+void enumerationSection();
+
+
+ //Section 4.6 - Typedefs
+typedef int error_t;
+
+int proccessOfSomething();
+void mainFunction();
+error_t isProccessSucceeded(int returnOfFunction);
 #endif // !EASYWAYHEADER

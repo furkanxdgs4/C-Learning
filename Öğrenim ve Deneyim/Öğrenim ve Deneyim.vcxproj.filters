@@ -21,9 +21,6 @@
     <ClCompile Include="Ana.cpp">
       <Filter>Kaynak Dosyaları</Filter>
     </ClCompile>
-    <ClCompile Include="Dosya2.cpp">
-      <Filter>Kaynak Dosyaları</Filter>
-    </ClCompile>
     <ClCompile Include="Functions.cpp">
       <Filter>Kaynak Dosyaları\Calculator</Filter>
     </ClCompile>
@@ -33,12 +30,18 @@
     <ClCompile Include="C++ Functions.cpp">
       <Filter>Kaynak Dosyaları</Filter>
     </ClCompile>
+    <ClCompile Include="Inventory Enum-Struct.cpp">
+      <Filter>Kaynak Dosyaları</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C++Header.h">
       <Filter>Kaynak Dosyalar</Filter>
     </ClInclude>
     <ClInclude Include="MainProgramsHeader.h">
+      <Filter>Kaynak Dosyalar</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory_H.h">
       <Filter>Kaynak Dosyalar</Filter>
     </ClInclude>
   </ItemGroup>

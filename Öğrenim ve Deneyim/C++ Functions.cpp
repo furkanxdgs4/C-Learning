@@ -1,10 +1,20 @@
 #include <iostream>
+#include <bitset>
+#include <string>
 #include <math.h>
 #include <cmath>
 #include "C++Header.h"
+#include "Inventory_H.h"
 using namespace std;
 using namespace defaultvalues;
 
+
+
+namespace defaultvalues {
+	extern const float pi(3.14159f);
+	extern const double avogadro(6.0221413e23);
+	extern const float realWorldsGravity(9.80665f);
+}
 
 
 	//Calculating the Area of Given Radius
@@ -22,32 +32,36 @@ void calculateFieldOfACircle() {														// Yarýçapý girilen yuvarlaðýn ala
 
 
 
-	//Converting Letter Values to Their Integer Values
-void determineLettersValues(string introducer) {							// Sorunlu yapý; Yapý, her zaman "For" döngüsünde takýlý kalýyor. Ýþlevsellik var, ancak istenen davranýþý sergilemiyor.
-	cout << introducer;														// Sorun þurada; Ne zaman girdiðimiz harfler tükense, beklendiði gibi "Yazinizi girin" yazmýyor.
-	char x = 1; 															// Tam tersine, "For" döngüsü içerisinde sýkýþýp sadece geçirilen verilerin, "Integer" deðerlerini veriyor.
-	int i = 1;																// Buyüzden geçici olarak bir düzenleme yapýlýyor ve çakma da olsa, hoþ gözükmesi için arayüzsel bir deðiþiklik yapýlýyor.		
-	cout << "Girilen yazi: ";
-	cin >> x;
-	for (i = 1; x != 0; ++i) {
-		cout << x << " harfinizin degeri: " << static_cast<int>(x) << endl;
-		cout << "Girilen yazi: ";
+	// Converting Letter Values to Their Integer Values
+	// Sorunlu yapý; Yapý, her zaman "For" döngüsünde takýlý kalýyor. Ýþlevsellik var, ancak istenen davranýþý sergilemiyor.
+	// Sorun þurada; Ne zaman girdiðimiz harfler tükense, beklendiði gibi "Yazinizi girin" yazmýyor.
+	// Tam tersine, "For" döngüsü içerisinde sýkýþýp sadece geçirilen verilerin, "Integer" deðerlerini veriyor.
+	// Buyüzden geçici olarak bir düzenleme yapýlýyor ve çakma da olsa, hoþ gözükmesi için arayüzsel bir deðiþiklik yapýlýyor.		
+void determineLettersValues(char x) {
+	int i = 1;																
+	cout << "Girilen deger: " << x << " harfinizin degeri: " << static_cast<int>(x) << endl;
+	while (x > 0)
+	{
 		cin >> x;
+		cout << "Girilen deger: " << x << " harfinizin degeri: " << static_cast<int>(x) << endl;
 	}
 }
 
 
 void determineLettersValuesMain() {														//Girilen 'Char'ýn 'Int' deðerini girer
-	string introducerofDeterminer = "Bu programda girdiginiz \'Char\'in \'Integer\' olarak degeri verilecek\n";
+	cout << "Bu programda girdiginiz 'Char'in 'Integer' olarak degeri verilecek\n";
+	cout << "'Char'inizi giriniz: ";
 	for (int i = 1; i > 0; ++i) {
-		determineLettersValues(introducerofDeterminer);
+		char word;
+		cin >> word;
+		determineLettersValues(word);
 	}
 }
 
 
 
 	//Checking Const & Constexpr Usages
-void testAreaOfSection28() {
+void testAreaOfSection29() {
 	constexpr int classNumber = 20;											//Compile-Time Instance: Compile gerçekleþirken direkt degerler girilir
 	int numberofStudents;													//Run-Time Instace: Çalýþma sýrasýnda, maxStudentCapacity oluþturulduðunda direkt olarak deger sabitlenir.
 	cout << "Sinif basina ogrenci sayisini giriniz: ";
@@ -104,7 +118,7 @@ void fallingSimulator() {
 	cin >> height;
 	float remainheight = height;
 	for (float second = 0; remainheight > 0; second = 0.1f + second) {
-		remainheight = height - formulationOfGravity(second);
+		remainheight = static_cast<float>(height - formulationOfGravity(second));
 		cout << "Su saniyede:   " << second << "\tsu yuksekliktesiniz: " << remainheight << endl;
 	}
 }
@@ -127,7 +141,7 @@ void calculatingPow() {
 
 
 float intPow(int number, int exponent) {
-	float no = number * number;
+	float no = static_cast<float>(number * number);
 	int expo = exponent - 2;
 	for (int i=0; expo > 0; expo = expo - 1) {
 		no = number * no;
@@ -142,11 +156,11 @@ float intPow(int number, int exponent) {
 bool areTheyEqual(double x, double y, float percentOfError) {
 	double resultOfAbstraction((x > y) ? (x - y) : (y - x));
 	if (resultOfAbstraction > 1) {
-		int greaterTwo((x > y) ? x : y);
+		int greaterTwo(static_cast<int>((x > y) ? x : y));
 		int exponent = 1;
 		for (exponent = 1; greaterTwo > 1; ++exponent) {
 
-			greaterTwo = ((x > y) ? x : y) / pow(10, exponent);
+			greaterTwo = (static_cast<int>(((x > y) ? x : y) / pow(10, exponent)));
 			if (greaterTwo > 1) {
 				cout << "Ussunuz bu: " << exponent << " ve hala 1'den buyuk" << endl;
 			}
@@ -182,12 +196,12 @@ void checkOfSection32() {
 	//Determining the Number's Bit Version
 int determineNearestPow(int number, int exponent) {
 	bool x = true;
-	int temporaryNumber((pow(2, exponent) > number) ? (0) : (number - pow(2, exponent)));
-	return pow(2, exponent);
+	int temporaryNumber(static_cast<int>((pow(2, exponent) > number) ? (0) : (number - pow(2, exponent))));
+	return static_cast<int>(pow(2, exponent));
 }
 
 
-void digitBitTransformer() {
+void digitToBitTransformer() {
 	cout << "Merhaba, bu programda girdiginiz sayinin 2'lik sistemdeki karsiligini alicaksiniz\nSayinizi giriniz: ";
 	int number;
 	cin >> number;
@@ -214,4 +228,272 @@ void digitBitTransformer() {
 		bitizedNumber *= 10;
 	}
 	cout << "Bit karsiliginiz: " << bitizedNumber << endl;
+}
+
+	//Transforming Bits To Decimals
+void bitToDecimalTransformer() {
+	cout << "Bitinizi giriniz: ";
+	int bitizednumber, decimalnumber = 0;
+	cin >> bitizednumber;
+	int bitsOrder = 1;
+	for (bitsOrder; bitizednumber > 2; ++bitsOrder && (bitizednumber /= 10))
+	{
+		if ((bitizednumber % 10) > 0) {
+			decimalnumber += static_cast<int>(pow(2, bitsOrder - 1));
+		}
+		else {
+
+		}
+		/* cout << "Bulundugunuz adim: " << bitsOrder << endl << "Bitized Number: " << bitizednumber << endl << "Decimal Number: " << decimalnumber << endl;*/ //Debugging Prints
+	}
+	decimalnumber += static_cast<int>(pow(2, bitsOrder - 1));
+	cout << "10'dalik sayiniz: " << decimalnumber << endl;
+}
+
+
+
+
+
+	//Testing BitFlags As Bools & Integers
+void testingBoolBits() {
+	bool IsHappy;
+	bool IsLaughing;
+	bool IsBlowByLaughing;
+
+	cout << "Mutlu musunuz? (0) Hayir, (1) Evet\n";
+	cin >> IsHappy;
+	cout << "Guluyor musunuz peki? (0) Hayir, (1) Evet\n";
+	cin >> IsLaughing;
+	cout << "Gulmekten yarildiniz mi? (0) Hayir, (1) Evet\n";
+	cin >> IsBlowByLaughing;
+
+
+	int status = ((IsHappy << 0) | (IsLaughing << 1) | (IsBlowByLaughing << 2) );
+	string stopLaughing = "Yeter lan, kesin su gulmeyi\n";
+	string happy = "Allah nesenizi eksik etmesin\n";
+	string semiHappy = "Iyisiniz, fena degil\n";
+	string unHappy = "Cok cok kotu\n";
+	string done = "Tamam bu gunluk bu kadar yeter\n";
+	cout << "O zaman durumunuz: " << (status > 1 ? happy : (status > 0 ? semiHappy : unHappy)) << endl;
+	cout << (status == 3 ? stopLaughing : done) << "Status degeriniz: ";
+	cout << (status >= 3 ? (status &= ~(IsLaughing << 1)) : status << 0) << endl;
+
+	cout << "Mutlu muyum? " << static_cast<bool>((static_cast<bool>(status) & IsHappy)) << endl;
+	cout << "Kahkahadan yarildim mi? " << static_cast<bool>((status << 0) & (IsBlowByLaughing << 2)) << endl;
+	cout << "Herhangi birini gerceklesti mi? " << static_cast<bool>(0 | status) << endl;
+}
+
+void testingSection38a() {
+	cout << "In this program, we will test Bit Flags usage\nEnter the Number: " << endl;
+	int x;
+	cin >> x;
+
+	unsigned char mainNumber = x << 0 , manipulatedNumber;
+
+	cout << "Main Number: " << (mainNumber << 0) << endl;
+
+	unsigned char manipulatorNumber = 28;
+	manipulatedNumber = (mainNumber^manipulatorNumber);
+	cout << "Turning On Number: "  << (manipulatedNumber << 0) << endl;
+	manipulatedNumber = (manipulatorNumber & (mainNumber));
+	cout << "Vice-Versa of Main Number: " << (~mainNumber << 0) << endl << "Turning Off Number: " << ((manipulatorNumber << 0) & (~mainNumber << 0)) << endl;
+}
+
+
+		//Static GLOBAL Variables
+static int x;
+
+void writeOutStatic(int input) {
+	x = input;
+	cout << "Static'iniz: " << x << endl;
+}
+
+		//Section 4.4b - A Program for Asking Your Name and Age for Calculating Your Age Average per Letter
+void yearsPerLetter() {
+	cout << "Merhaba, bu programda girdiginiz adiniz ve yasiniz sayesinde adinizdaki her harfe dusen ortalama yasadiginiz sureyi hesaplayacagiz\n";
+	while (true)
+	{
+		string firstname, secondname, surname;
+		int age;
+		cout << "Ilk isminizi giriniz: ";
+		cin >> firstname;
+		cout << "Ikinci isminiz var mi? (1) Evet, (2) Hayir\n";
+		int secondName;
+		cin >> secondName;
+		if (secondName == 1)
+		{
+			cout << "O zaman ikinci isminizi giriniz: ";
+			cin >> secondname;
+		}
+		cout << "Soyadinizi giriniz: ";
+		cin >> surname;
+		cout << "Yasinizi giriniz: ";
+		cin >> age;
+		cout << "Harfiniz basina dusen yasadiginiz sure: " << age / ((firstname.length()) + ((secondname.length()) ? (secondname.length()) : 0) + (surname.length())) << endl;
+	}
+}
+
+
+
+
+
+	//Section 4.6 - Type Defining and Type Aliasing in C++11
+
+
+void mainFunction() {
+	isProccessSucceeded(proccessOfSomething());
+}
+
+error_t isProccessSucceeded(int returnOfFunction) {
+	error_t returnValue(returnOfFunction);
+	switch (returnValue)
+	{
+	case 0:
+		cout << "Isleminiz basariliymis\n";
+		return 0;
+		break;
+
+	case 1:
+		cout << "Isleminiz basarisizmis\n";
+		return 1;
+		break;
+
+	default:
+		cout << "Isleminize ne oldugu tespit edilemedi\n";
+		return -1;
+		break;
+	}
+}
+
+int proccessOfSomething() {
+	cout << "Burada bir seyler yapilmali, suanlik 0 donduruluyor" << endl;
+	return 0;
+}
+//Section 4.5 - A Enumeration Type Defining and Making An Inventory System
+
+string writeItemsNames(string Written) {
+	cout << Written << endl;
+	return Written;;
+}
+
+int ItemSocketting() {
+	cout << "Hangi sokete takilacagini giriniz: ";
+	int socket;
+	cin >> socket;
+	return socket;
+}
+
+ItemVariables getObjectsStruct(int selectedObject) {
+	switch (selectedObject) 
+	{
+		case 1:
+			return TORCH_t;
+		break;
+			
+		case 2:
+			return AK_47_t;
+		break;
+
+		case 3:
+			return FLASH_LIGHT_t;
+		break;
+
+		case 4:
+			return WATER_t;
+		break;
+
+		default:
+			cout << "Nesne bulunamadi, giris 'TORCH'a donduruldu";
+			return TORCH_t;
+		break;
+
+	}
+}
+
+SocketToInventory getObjectsVar(int whichObject) {
+	switch (whichObject)
+	{
+
+		case 1:
+			return TORCH_i;
+		break;
+
+		case 2:
+			return AK_47_i;
+		break;
+
+		case 3:
+			return FLASH_LIGHT_i;
+		break;
+
+		case 4:
+			return WATER_i;
+		break;
+
+		default:
+			cout << "Nesne bulunamadi, 'TORCH'a donuluyor" << endl;
+			return TORCH_i;
+		break;
+	}
+}
+
+void setObjectsValue(int socket, int whichObject) {
+	switch (whichObject)
+	{
+		case 1:
+			TORCH_i.socketOfItem = socket;
+		break;
+
+		case 2:
+			AK_47_i.socketOfItem = socket;
+		break;
+		
+		case 3:
+			FLASH_LIGHT_i.socketOfItem = socket;
+		break;
+
+		case 4:
+			WATER_i.socketOfItem = socket;
+		break;
+
+		default:
+			cout << "Nesne bulunamadi\n";
+		break;
+	}
+}
+
+int ItemSelecting() {
+	cout << "Nesnenizi secin:\n(1) TORCH\n(2) AK_47\n(3) FLASH_LIGHT\n(4) WATER\n";
+	int WhichObject;
+	cin >> WhichObject;
+
+	ItemVariables ItemsStruct = getObjectsStruct(WhichObject);
+	SocketToInventory ItemsSocket = getObjectsVar(WhichObject);
+	{
+		string nameOfItem = ItemsStruct.nameOfItem;
+		cout << "Nesnenizin adi: " << getObjectsStruct(WhichObject).nameOfItem << endl;
+	}
+	{
+		cout << "Nesnenizin kullanim suresi: " << getObjectsStruct(WhichObject).usageDuration << endl;
+	}
+	{
+		cout << "Nesnenizin soketi: " << getObjectsVar(WhichObject).socketOfItem << endl;
+	}
+
+	cout << "Iteminizin soketini degistirmek ister misiniz? (1) Evet, (0) Hayir\n";
+	bool x;
+	cin >> x;
+	if (x) {
+		setObjectsValue(ItemSocketting(), WhichObject);
+		cout << "Nesnenizin yeni soketi: " << getObjectsVar(WhichObject).socketOfItem << endl;
+	}
+
+	return 0;
+}
+
+void enumerationSection() {
+	cout << "Bu programda, verdiginiz bilgilere gore programin sonunda hangi nesnenin hangi sirada oldugunu ogreneceksiniz\n";
+	while (true) {
+		ItemSelecting();
+	}
 }

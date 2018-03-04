@@ -120,11 +120,12 @@
   <ItemGroup>
     <ClCompile Include="Ana.cpp" />
     <ClCompile Include="C++ Functions.cpp" />
-    <ClCompile Include="Dosya2.cpp" />
+    <ClCompile Include="Inventory Enum-Struct.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Hesap Makinesi.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Inventory_H.h" />
     <ClInclude Include="MainProgramsHeader.h" />
     <ClInclude Include="C++Header.h" />
   </ItemGroup>
