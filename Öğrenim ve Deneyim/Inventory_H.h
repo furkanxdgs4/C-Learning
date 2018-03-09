@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <utility>
 #include <math.h>
 #include <string>
 using namespace std;
@@ -28,15 +29,15 @@ const extern ItemVariables FLASH_LIGHT_t = { "FLASH LIGHT", 5 };
 const extern ItemVariables WATER_t = { "WATER", 10 };
 
 struct SocketToInventory {
-	public:
-		int socketOfItem;
-		int getSocketOfItem() const {
-			return socketOfItem;
-		}
-		void socketChangingOfItem(int socket) {
-			socketOfItem = socket;
-		}
+	int socketOfItem;
+	void socketChangingOfItem(int socket) {
+		socketOfItem = socket;
+	}
+	int getSocketOfItem() {
+		return socketOfItem;
+	}
 };
+
 
 SocketToInventory TORCH_i = {1};
 SocketToInventory AK_47_i = {2};

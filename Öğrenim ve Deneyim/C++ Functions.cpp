@@ -1,10 +1,10 @@
 #include <iostream>
+#include <utility>
 #include <bitset>
 #include <string>
 #include <math.h>
 #include <cmath>
 #include "C++Header.h"
-#include "Inventory_H.h"
 using namespace std;
 using namespace defaultvalues;
 
@@ -140,16 +140,16 @@ void calculatingPow() {
 }
 
 
-float intPow(int number, int exponent) {
-	float no = static_cast<float>(number * number);
-	int expo = exponent - 2;
-	for (int i=0; expo > 0; expo = expo - 1) {
-		no = number * no;
+int intPow(int number, int exponent) {
+	float exponented_Number = 1;
+	for (int i=0; exponent > i; ++i) {
+		exponented_Number *= number;
 	}
-	for (int i = 0; expo <= 0; expo = expo + 1) {
-		no = 1 / (number * no);
-	}
-	return no;
+	/*for (int i = 0; exponent < i; --i) {																//Bu kýsým, "IntPow" mantýðýna uymadýðý için (Döndürdüðü sayi float) iptal edildi
+		exponented_Number *= 1.0 / number;
+		cout << "Adim: " << i + 1 << " de sayiniz: " << exponented_Number << endl;
+	}*/
+	return static_cast<int>(exponented_Number);
 }
 
 	//Truthest Equalition Calculation

@@ -1,6 +1,7 @@
 #ifndef EASYWAYHEADER
 #define EASYWAYHEADER
 #include <iostream>
+#include <utility>
 #include <string>
 using namespace std;
 
@@ -22,7 +23,7 @@ const double formulationOfGravity(float second);
 void fallingSimulator();
 
 void calculatingPow();
-float intPow(const int number, const int exponent);
+int intPow(const int number, const int exponent);
 
 bool areTheyEqual(double x, double y, float percentOfError);
 
@@ -55,6 +56,10 @@ void yearsPerLetter();
 
  //Section 4.5 - Enumerations
 void enumerationSection();
+
+ //Section 6.3 - Arrays
+void arrayTest();
+
 
 
  //Section 4.6 - Typedefs
